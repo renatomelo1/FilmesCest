@@ -1,17 +1,69 @@
-<?php include "cabecalho.php" ?>
-<form>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button href="principal.php" type="submit" class="btn btn-primary">Submit</button>
-</form>
+<?php
+include "conexao.php";
+include "index.html"
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width,initial-scale-1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <h1>Acesse sua conta</h1>
+    <form action="" method="POST">
+        <p>
+            <label>Nome</label>
+            <input type="text" name="nome">
+        </p>
+        <p>
+            <label>Senha</label>
+            <input type="password" name="senha">
+            <br><br>
+            <button type="submit">Enviar</button>
+        </p>
+
+    </form>
+</body>
+
+</html>
+
+<?php
+if (isset($_POST['nome']) && isset($_POST['senha'])) {
+
+    if (strlen($_POST['nome']) == 0) {
+        echo "Preencha seue-mail";
+    } else if (strlen($_POST['senha']) == 0) {
+        echo "Preencha sua senha";
+    } else {
+
+        $nome = pg_escape_string($_POST['nome']);
+        $senha = pg_escape_string($_POST['senha']);
+
+        $sql = "select * from usuario where nome = '$nome' and senha = md5('$senha')";
+
+        $query = pg_query($conn, $sql) or die("Encontrou um erro ao executar determinada instrução sql: " . pg_last_error() . ". <br/>");
+
+        $quantidade = pg_num_rows($query);
+
+        if ($quantidade == 1) {
+
+            $usuario = pg_fetch_assoc($query);
+
+            if (!isset($_SESSION)) {
+                session_start();
+            }
+
+            $_SESSION['id'] = $usuario['id'];
+            $_SESSION['nome'] = $usuario['nome'];
+            header("Location: principal.php");
+        } else {
+            echo "Falha ao logar! E-mail ou senha incorretos";
+        }
+    }
+}
+
+?>

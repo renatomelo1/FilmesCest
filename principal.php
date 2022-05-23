@@ -1,10 +1,7 @@
-<?php include "cabecalho.php" ?>
 <?php
-// conecta banco de dados
-$conn = pg_connect(" host=localhost port=5432 user=postgres password=cest dbname=postgres");
-// E xecuta a consulta no banco de dados
-$filmes = pg_query($conn, "select * from filmes;");
-
+include "conexao.php";
+include "index.html";
+include "sessao.php";
 ?>
 
 <body>
@@ -22,46 +19,20 @@ $filmes = pg_query($conn, "select * from filmes;");
         <li class="nav-item">
             <a class="nav-link " href="updatefilme.php">Update</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link " href="principalgenero.php">Gênero</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="perfil.php">Perfil</a>
+        </li>
+
+        <li class="nav-item" style="font-size:small; margin: 10px;">
+            Bem vindo ao painel, <?php echo $_SESSION['nome']; ?>
+        </li>
+        <a style="font-size:small; margin: 10px;" href=" logout.php">Sair</a>
+
     </ul>
-    <!-- barra de naveção desativada -->
-    <!-- <nav class="nav bar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="principal.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cadastrofilme.php">Cadastro</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Funções
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="conexao.php">Filmes Do BD</a></li>
-                            <li><a class="dropdown-item" href="removerfilme.php">remover filme</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
-                </ul>
-                <form class="d-flex" style="margin-bottom:10px">
-                    <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav> -->
+
     <div class="row row-cols-4 row-cols-md-4 g-4">
 
         <?php while ($filme = pg_fetch_array($filmes)) : ?>
@@ -81,3 +52,4 @@ $filmes = pg_query($conn, "select * from filmes;");
         <?php endwhile ?>
 
     </div>
+</body>

@@ -1,4 +1,8 @@
-<?php include "cabecalho.php" ?>
+<?php
+include "conexao.php";
+include "index.html";
+include "sessao.php";
+?>
 
 <html>
 
@@ -35,31 +39,23 @@
     </form>
     <br>
 
-    <?php
-    // Conecta banco de dados
-    $conn = pg_connect(" host=localhost port=5432 user=postgres password=cest dbname=postgres");
-    // Executa a consulta no banco de dados
-    $resultado = pg_query($conn, "select * from filmes;");
+</html>
 
-    // Remove filmes do catálogo.
-    if ($_POST) {
-        $titulo = $_POST['titulo'];
+<?php
+// Remove filmes do catálogo.
+if ($_POST) {
+    $titulo = $_POST['titulo'];
 
-        $query = "DELETE FROM filmes WHERE nomefilme = '$titulo';";
+    $query = "DELETE FROM filmes WHERE nomefilme = '$titulo';";
 
-        pg_query($conn, $query) or die("Encountered an error when executing given sql statement: " . pg_last_error() . ". <br/>");
+    pg_query($conn, $query) or die("Houve um problema ao executar o comando sql: " . pg_last_error() . ". <br/>");
 
 
-        print "<h6>$titulo" . " removido do catalogo </h6>";
-
-        // Tabela de filmes 
-
-        include "tabelafilmes.php";
+    print "<h6>$titulo" . " removido do catalogo </h6>";
 
 
-        // Encerrando conexão
+    // Encerrando conexão
+    pg_close($conn);
+}
 
-        pg_close($conn);
-    }
-
-    ?>
+?>

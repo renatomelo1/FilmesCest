@@ -1,4 +1,14 @@
-<?php include "cabecalho.php" ?>
+<?php
+include "conexao.php";
+include "index.html";
+include "sessao.php";
+?>
+<html>
+
+<head>
+    <meta charsaet="UTF-8">
+    <title>Cadastro Filme</title>
+</head>
 
 <body>
     <!-- barra de navegação da página -->
@@ -30,19 +40,16 @@
         <br>
 
         <!-- Botões de cancelar e cadastrar -->
-        <a href="#" class="btn btn-secondary btn-lg " tabindex="-1" role="button">Cancelar</a>
+        <input type="reset" value="Cancelar" class="btn btn-secondary btn-lg " tabindex="-1" role="button">
         <input type="submit" value="Cadastrar" class="btn btn-primary btn-lg " tabindex="-1" role="button">
         <br>
-
+    </form>
 </body>
+
+</html>
 
 
 <?php
-// Conecta banco de dados
-$conn = pg_connect(" host=localhost port=5432 user=postgres password=cest dbname=postgres");
-// Executa a consulta no banco de dados
-$resultado = pg_query($conn, "select * from filmes;");
-
 // Adiciona filmes ao cátalogo
 if ($_POST) {
     $titulo = $_POST['titulo'];
@@ -51,12 +58,9 @@ if ($_POST) {
 
     $query = "insert into filmes(nomeFilme,sinopseFilme,posterFilme) values('$titulo','$sinopse','$poster');";
 
-
-    pg_query($conn, $query) or die("Encountered an error when executing given sql statement: " . pg_last_error() . ". <br/>");
+    pg_query($conn, $query) or die("Houve um problema ao executar o comando sql: " . pg_last_error() . ". <br/>");
 
     print "<h6><br>$titulo" . " adicionado ao catálogo de filmes</h6> ";
-    // Tabela de filmes 
-    include "tabelafilmes.php";
 
     // Encerrando conexão
     pg_close($conn);
