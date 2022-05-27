@@ -13,17 +13,17 @@ include "index.html"
 </head>
 
 <body>
-    <h1>Acesse sua conta</h1>
-    <form action="" method="POST">
+
+    <form class="form-control" style="margin-right: 20px;" method="POST">
+        <h1>Acesse sua conta</h1>
         <p>
-            <label>Nome</label>
-            <input type="text" name="nome">
+            Nome <input class="form-control" type="text" name="nome">
         </p>
         <p>
-            <label>Senha</label>
-            <input type="password" name="senha">
+            Senha <input class="form-control" type="password" name="senha">
             <br><br>
-            <button type="submit">Enviar</button>
+            <a class="btn btn-secondary btn-lg " tabindex="-1" role="button" href="cadastrousuario.php">Cadastrar-se</a>
+            <input type="submit" value="Entrar" class="btn btn-primary btn-lg " tabindex="-1" role="button">
         </p>
 
     </form>

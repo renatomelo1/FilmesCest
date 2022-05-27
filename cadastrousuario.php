@@ -1,7 +1,6 @@
 <?php
 include "conexao.php";
 include "index.html";
-include "sessao.php";
 ?>
 <html>
 
@@ -11,49 +10,8 @@ include "sessao.php";
 </head>
 
 <body>
-    <!-- Barra de navegação secundária -->
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link " href="principal.php">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="cadastrofilme.php">Cadastrar</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="removerfilme.php">Remover</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " href="updatefilme.php">Update</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " href="principalgenero.php">Gênero</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active " href="perfil.php">Perfil</a>
-        </li>
-        <li class="nav-item" style="font-size:small; margin: 10px;">
-            Bem vindo ao painel, <?php echo $_SESSION['nome']; ?>
-        </li>
-        <a style="font-size:small; margin: 10px;" href="logout.php">Sair</a>
-    </ul>
-    <!-- barra de navegação da página -->
-    <ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link active" href="cadastrousuario.php">Cadastrar</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="removerusuario.php">Remover</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="updateusuario.php">Update</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="listarusuario.php">Listar</a>
-        </li>
-    </ul>
-
     <!-- Formulário de cadastro do filme -->
-    <form method="post">
+    <form class="form-control" method="post">
         Nome: <input type="text" name="nome" type="submit" class="form-control" placeholder="Nome">
         <br>
 
@@ -65,7 +23,7 @@ include "sessao.php";
 
         <!-- Botões de cancelar e cadastrar -->
         <input type="reset" value="Cancelar" class="btn btn-secondary btn-lg " tabindex="-1" role="button">
-        <input type="submit" value="Cadastrar" class="btn btn-primary btn-lg " tabindex="-1" role="button">
+        <a href="login.php" type="submit" class="btn btn-primary btn-lg " tabindex="-1" role="button">Cadastrar</a>
         <br>
     </form>
 </body>
