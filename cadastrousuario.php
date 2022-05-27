@@ -21,9 +21,10 @@ include "index.html";
         Senha: <input type="password" name="senha" class="form-control"></input>
         <br>
 
-        <!-- Botões de cancelar e cadastrar -->
+        <!-- Botões de cancelar e cadastrar --> 
         <input type="reset" value="Cancelar" class="btn btn-secondary btn-lg " tabindex="-1" role="button">
-        <a href="login.php" type="submit" class="btn btn-primary btn-lg " tabindex="-1" role="button">Cadastrar</a>
+        <a href="login.php" type="submit" class="btn btn-secondary btn-lg " tabindex="-1" role="button">Ir para Login</a>
+        <input type="submit" value="Cadastrar" class="btn btn-primary btn-lg " tabindex="-1" role="button">
         <br>
     </form>
 </body>
