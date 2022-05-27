@@ -41,7 +41,7 @@ include "sessao.php";
     </ul>
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="cadastrogenero.php">Add Gênero</a>
+            <a class="nav-link" href="cadastrogenero.php">Cadastrar</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="removergenero.php">Remover</a>
@@ -50,7 +50,7 @@ include "sessao.php";
             <a class="nav-link" href="updategenero.php">Atualizar</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="generos.php">Listar</a>
+            <a class="nav-link" href="listargenero.php">Listar</a>
         </li>
     </ul>
     <form method="post">

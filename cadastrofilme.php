@@ -32,6 +32,21 @@ include "sessao.php";
         Titulo Filme: <input type="text" name="titulo" type="submit" class="form-control" placeholder="Título Filme">
         <br>
 
+        Gênero Filme:
+        <select id="selectgenero" name="selectgenero" class="form-control">
+            <option value="">--Escolha o Gênero do Filme--</option>
+            <?php
+            $conn = pg_connect(" host=localhost port=5432 user=postgres password=cest dbname=postgres");
+            $resultado = pg_query($conn, "select * from genero;");
+
+            while ($linhagenero = pg_fetch_assoc($resultado)) {
+                echo "<option value=$linhagenero[codgenero] > $linhagenero[genero] </option> ";
+            }
+            pg_close($conn);
+            ?>
+        </select>
+        <br>
+
         Sinopse Filme: <textarea type="text" name="sinopse" class="form-control" rows="3"></textarea>
         <br>
 
@@ -52,13 +67,18 @@ include "sessao.php";
 <?php
 // Adiciona filmes ao cátalogo
 if ($_POST) {
+    $conn = pg_connect(" host=localhost port=5432 user=postgres password=cest dbname=postgres");
+
     $titulo = $_POST['titulo'];
     $sinopse = $_POST['sinopse'];
     $poster = $_POST['poster'];
+    $genero = $_POST['selectgenero'];
 
-    $query = "insert into filmes(nomeFilme,sinopseFilme,posterFilme) values('$titulo','$sinopse','$poster');";
+    $query = "insert into filmes(nomeFilme,sinopseFilme,posterFilme,codgenero) values('$titulo','$sinopse','$poster',$genero);";
 
     pg_query($conn, $query) or die("Houve um problema ao executar o comando sql: " . pg_last_error() . ". <br/>");
+
+    echo "$genero";
 
     print "<h6><br>$titulo" . " adicionado ao catálogo de filmes</h6> ";
 

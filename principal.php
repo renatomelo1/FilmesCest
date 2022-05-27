@@ -44,7 +44,7 @@ include "sessao.php";
                     <div class="card-body">
                         <h5 class="card-title" style="font-size:16px;"><?php echo $filme["nomefilme"] ?></h5>
                         <p class="card-text" style="font-size:12px;"><?php echo $filme["sinopsefilme"] ?></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                     </div>
                 </div>
             </div>

@@ -41,7 +41,7 @@ include "sessao.php";
     </ul>
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="cadastrogenero.php">Add Gênero</a>
+            <a class="nav-link" href="cadastrogenero.php">Cadastrar</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="removergenero.php">Remover</a>
