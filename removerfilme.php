@@ -44,18 +44,28 @@ include "sessao.php";
 <?php
 // Remove filmes do catálogo.
 if ($_POST) {
+    $conn = pg_connect("host=localhost port=5432 user=postgres password=cest dbname=postgres");
     $titulo = $_POST['titulo'];
+    $sql = "SELECT * FROM filmes WHERE nomefilme = '$titulo'";
+    $query = pg_query($conn, $sql);
 
-    $query = "DELETE FROM filmes WHERE nomefilme = '$titulo';";
+    if (strlen($_POST['titulo']) == 0) {
+        echo "<h6> Preencha com um titulo </h6>";
+    } else if (pg_num_rows($query) == 0) {
+        echo "<h6> Filme não cadastrado</h6>";
+    } else {
+        $titulo = $_POST['titulo'];
 
-    pg_query($conn, $query) or die("Houve um problema ao executar o comando sql: " . pg_last_error() . ". <br/>");
+        $query = "DELETE FROM filmes WHERE nomefilme = '$titulo';";
+
+        pg_query($conn, $query) or die("Houve um problema ao executar o comando sql: " . pg_last_error() . ". <br/>");
 
 
-    print "<h6>$titulo" . " removido do catalogo </h6>";
+        print "<h6>$titulo" . " removido do catalogo </h6>";
 
 
-    // Encerrando conexão
-    pg_close($conn);
+        // Encerrando conexão
+        pg_close($conn);
+    }
 }
-
 ?>

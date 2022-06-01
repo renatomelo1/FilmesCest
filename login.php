@@ -13,20 +13,42 @@ include "index.html"
 </head>
 
 <body>
+    <div>
+        <!-- Pills navs -->
 
-    <form class="form-control" style="margin-right: 20px;" method="POST">
-        <h1>Acesse sua conta</h1>
-        <p>
-            Nome <input class="form-control" type="text" name="nome">
-        </p>
-        <p>
-            Senha <input class="form-control" type="password" name="senha">
-            <br><br>
-            <a class="btn btn-secondary btn-lg " tabindex="-1" role="button" href="cadastrousuario.php">Cadastrar-se</a>
-            <input type="submit" value="Entrar" class="btn btn-primary btn-lg " tabindex="-1" role="button">
-        </p>
+        <form class="form-outline" method="POST">
 
-    </form>
+            <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active btn btn-secondary btn-md" id="tab-login" data-mdb-toggle="pill" href="login.php" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link btn btn-secondary btn-md" id="tab-register" data-mdb-toggle="pill" href="cadastrousuario.php" role="tab" aria-controls="pills-register" aria-selected="false">Cadastro</a>
+                </li>
+            </ul>
+
+            <br>
+            <div class="form-outline mb-3">
+                Nome<input type="text" id="loginName" class="form-control" name="nome" />
+            </div>
+
+            <p>
+            <div class="form-outline mb-3">
+                Senha<input class="form-control" type="password" name="senha">
+                <br>
+            </div>
+
+            <div class="mb-3">
+                <!-- <a class="btn btn-secondary btn-lg " tabindex="-1" role="button" href="cadastrousuario.php">Cadastrar-se</a> -->
+                <input type="submit" value="Entrar" class="btn btn-primary btn-lg " tabindex="-1" role="button">
+            </div>
+            </p>
+
+        </form>
+
+
+
+    </div>
 </body>
 
 </html>

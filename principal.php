@@ -45,6 +45,20 @@ include "sessao.php";
                         <h5 class="card-title" style="font-size:16px;"><?php echo $filme["nomefilme"] ?></h5>
                         <p class="card-text" style="font-size:12px;"><?php echo $filme["sinopsefilme"] ?></p>
                         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+                        <!-- <br>
+                        <p>
+                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                                Sinopse
+                            </button>
+                        </p>
+                        <div style="min-height: 5px; font-size:15px">
+                            <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                                <div class="card card-body" style="width: 230px;">
+
+                                </div>
+                            </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

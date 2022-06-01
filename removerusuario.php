@@ -66,16 +66,25 @@ include "sessao.php";
 </html>
 <?php
 if ($_POST) {
-    // Adicionar gênero
     $nome = $_POST['nome'];
+    $sql = "SELECT * FROM usuario WHERE nome = '$nome'";
+    $query = pg_query($conn, $sql);
 
-    $query = "delete from usuario where nome = '$nome'";
+    if (strlen($_POST['nome']) == 0) {
+        echo "Preencha seue-mail";
+    } else if (pg_num_rows($query) == 0) {
+        echo "Usuario Enexistente";
+    } else {
+        // Adicionar gênero
+        $nome = $_POST['nome'];
 
-    pg_query($conn, $query) or die("Houve um problema no SQL:" . pg_last_error() . "<br>");
+        $query = "delete from usuario where nome = '$nome'";
 
-    print "<h6><br>Usuário  " . "$nome" . " removido do sistema ";
+        pg_query($conn, $query) or die("Houve um problema no SQL:" . pg_last_error() . "<br>");
 
-    pg_close($conn);
+        print "<h6><br>Usuário  " . "$nome" . " removido do sistema ";
+
+        pg_close($conn);
+    }
 }
-
 ?>
