@@ -47,7 +47,7 @@ include "sessao.php";
             <a class="nav-link " href="removerusuario.php">Remover</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="updateusuario.php">Update</a>
+            <a class="nav-link" href="updateusuario.php">Atualizar</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="listarusuario.php">Listar</a>
