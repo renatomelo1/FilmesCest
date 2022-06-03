@@ -18,6 +18,10 @@ CREATE TABLE usuario (
     	senha VARCHAR   
 );
 
+CREATE VIEW view_filmegenero 
+AS SELECT codfilme,nomefilme,filmes.codgenero,genero ,posterfilme,sinopsefilme 
+FROM filmes, genero 
+WHERE filmes.codgenero = genero.codgenero;
 
 
 INSERT INTO genero(genero) VALUES ('Generico');
