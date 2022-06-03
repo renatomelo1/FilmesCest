@@ -2,6 +2,8 @@
 include "conexao.php";
 include "index.html";
 include "sessao.php";
+include "principalgenero.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,47 +16,9 @@ include "sessao.php";
 </head>
 
 <body>
-    <!-- Barra de navegação secundária -->
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link " href="principal.php">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="cadastrofilme.php">Cadastrar</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="removerfilme.php">Remover</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " href="updatefilme.php">Update</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active " href="listargenero.php">Gênero</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link  " href="perfil.php">Perfil</a>
-        </li>
-        <li class="nav-item" style="font-size:small; margin: 10px;">
-            Bem vindo ao painel, <?php echo $_SESSION['nome']; ?>
-        </li>
-        <a style="font-size:small; margin: 10px;" href=" logout.php">Sair</a>
-    </ul>
-    <ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link active" href="cadastrogenero.php">Cadastrar</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="removergenero.php">Remover</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="updategenero.php">Atualizar</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="listargenero.php">Listar</a>
-        </li>
-    </ul>
+    <!-- Formulario -->
     <form method="post">
-        <label>Cadastro</label>
+        <label>Cadastrar</label>
         <input type="text" name="genero">
 
         <button type="submit">Adicionar</button>

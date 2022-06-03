@@ -5,7 +5,7 @@ include "sessao.php";
 ?>
 
 <body>
-    <!-- Barra de navegação secundária -->
+    <!-- Barra de Navegação -->
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link active" href="principal.php">Home</a>
@@ -26,39 +26,24 @@ include "sessao.php";
             <a class="nav-link " href="perfil.php">Perfil</a>
         </li>
 
-        <li class="nav-item" style="font-size:small; margin: 10px;">
-            Bem vindo ao painel, <?php echo $_SESSION['nome']; ?>
+        <li class="" style="font-size:14px; margin: 10px;margin-left: 200px; font-family: 'Times New Roman', Times, serif; ">
+            <strong>Bem vindo ao painel, <?php echo $_SESSION['nome']; ?></strong>
+            <a style="font-size:small; margin-left: 280px;" href=" logout.php">Sair</a>
         </li>
-        <a style="font-size:small; margin: 10px;" href=" logout.php">Sair</a>
 
     </ul>
-
-    <div class="row row-cols-4 row-cols-md-4 g-4">
-
+    <!-- Loop do formado do filme -->
+    <div class="d-flex bd-highlight mb-3">
         <?php while ($filme = pg_fetch_array($filmes)) : ?>
 
             <!-- Esqueleto para montar a carta do filme -->
-            <div class="col ">
+            <div class="">
                 <div class="card" style="width: 16rem; margin: 17px;">
                     <img src="<?php echo $filme["posterfilme"] ?>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title" style="font-size:16px;"><?php echo $filme["nomefilme"] ?></h5>
-                        <p class="card-text" style="font-size:12px;"><?php echo $filme["sinopsefilme"] ?></p>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-
-                        <!-- <br>
-                        <p>
-                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                                Sinopse
-                            </button>
-                        </p>
-                        <div style="min-height: 5px; font-size:15px">
-                            <div class="collapse collapse-horizontal" id="collapseWidthExample">
-                                <div class="card card-body" style="width: 230px;">
-
-                                </div>
-                            </div>
-                        </div> -->
+                        <p class="card-text" style="font-size:12px;"><?php echo $filme["sinopsefilme"] ?> <br> <strong>Gênero:</strong> <?php echo $filme["genero"] ?></p>
+                        <br>
                     </div>
                 </div>
             </div>

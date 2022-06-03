@@ -1,12 +1,12 @@
 <?php
-include "index.html";
-
 if (!isset($_SESSION)) {
     session_start();
 }
+
 ?>
 
 <?php
+include "index.html";
 if (!isset($_SESSION['id'])) { ?>
     <!-- Button trigger modal -->
     <div class="text-center" style="margin-top: 200px;">

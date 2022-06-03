@@ -10,10 +10,10 @@ include "index.html";
 </head>
 
 <body>
-    <!-- Formulário de cadastro do filme -->
+    <!-- Formulário de cadastro do usuario -->
     <form class="form-outline" method="post">
         <!-- Pills navs -->
-        <ul class="nav nav-pills nav-justified mb-4" id="ex1" role="tablist">
+        <ul class="nav nav-pills nav-justified-center mb-3 w-50" id="ex1" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link btn btn-secondary btn-md " id="tab-login" data-mdb-toggle="pill" href="login.php" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
             </li>
@@ -44,17 +44,32 @@ include "index.html";
 <?php
 // Adiciona filmes ao cátalogo
 if ($_POST) {
+    // variavel para usuário já cadastrado
     $nome = $_POST['nome'];
     $sql = "SELECT * FROM usuario WHERE nome = '$nome'";
     $query = pg_query($conn, $sql);
 
+    // Caso receba algum campo vazio
     if (strlen($_POST['nome']) == 0) {
-        echo "Preencha seu nome";
+        echo "<h6>Preencha seu nome</h6>";
     } else if (strlen($_POST['email']) == 0) {
-        echo "Preencha seu email";
+        echo "<h6>Preencha seu e-mail</h6>";
+    } else if (strlen($_POST['senha']) == 0) {
+        echo "<h6>Preencha sua senha</h6>";
     } else if (pg_num_rows($query) > 0) {
-        echo "Usuario Já cadastrado";
+        echo "<h6>Usuario já cadastrado";
     } else {
+?>
+        <h6>
+            <div class="alert alert-success alert-dismissible d-flex align-items-center w-50 p-3" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                    <use xlink:href="#check-circle-fill" />
+                </svg>
+                Cadastrado com SUCESSO
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </h6>
+<?php
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha'];
@@ -62,8 +77,6 @@ if ($_POST) {
         $query = "INSERT INTO usuario (nome, email, senha) VALUES ( '$nome', '$email', md5('$senha'));";
 
         pg_query($conn, $query) or die("Houve um problema ao executar o comando sql: " . pg_last_error() . ". <br/>");
-
-        print "<h6><br>Nome usuário" . " $nome adicionado";
 
         // Encerrando conexão
         pg_close($conn);

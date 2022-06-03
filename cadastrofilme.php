@@ -14,7 +14,7 @@ include "sessao.php";
     <!-- barra de navegação da página -->
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="principal.php">Home</a>
+            <a class="nav-link " href="principal.php">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="cadastrofilme.php">Cadastrar</a>
@@ -25,6 +25,18 @@ include "sessao.php";
         <li class="nav-item">
             <a class="nav-link " href="updatefilme.php">Update</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link " href="principalgenero.php">Gênero</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="perfil.php">Perfil</a>
+        </li>
+
+        <li class="nav-item " style="font-size:14px; margin: 10px;margin-left: 200px; font-family: 'Times New Roman', Times, serif; ">
+            <strong>Bem vindo ao painel, <?php echo $_SESSION['nome']; ?></strong>
+            <a style="font-size:small; margin-left: 280px;" href=" logout.php">Sair</a>
+        </li>
+
     </ul>
 
     <!-- Formulário de cadastro do filme -->

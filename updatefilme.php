@@ -16,17 +16,29 @@ include "sessao.php";
     <!-- Barra de navegação  -->
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="principal.php">Home</a>
+            <a class="nav-link " href="principal.php">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="cadastrofilme.php">Cadastrar</a>
         </li>
-        <li class="nav-item ">
-            <a class="nav-link " href="removerfilme.php">Remover</a>
+        <li class="nav-item">
+            <a class="nav-link" href="removerfilme.php">Remover</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="updatefilme.php">Update</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link " href="principalgenero.php">Gênero</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="perfil.php">Perfil</a>
+        </li>
+
+        <li class="nav-item " style="font-size:14px; margin: 10px;margin-left: 200px; font-family: 'Times New Roman', Times, serif; ">
+            <strong>Bem vindo ao painel, <?php echo $_SESSION['nome']; ?></strong>
+            <a style="font-size:small; margin-left: 280px;" href=" logout.php">Sair</a>
+        </li>
+
     </ul>
 
     <!-- Formulário para alterar titulo -->
@@ -66,18 +78,23 @@ if ($_POST) {
 
 ?>
 
-<!-- Tabela de filmes -->
-<table>
-    <tr>
-        <th>Nome Filmes</th>
-        <th>Id Filmes</th>
-    </tr>
-    <?php
-    while ($linha = pg_fetch_array($resultado)) {
-        print_r("<tr>");
-        print_r("<td>" . $linha["nomefilme"] . "</td>");
-        print_r("<td>" . $linha["codfilme"] . "</td>");
-        print_r("</tr>");
-    }
-    ?>
-</table>
+<!-- Lista Filmes -->
+<div class="d-flex bd-highlight mb-4">
+
+    <?php while ($filme = pg_fetch_array($filmes)) : ?>
+
+        <!-- Esqueleto para montar a carta do filme -->
+        <div class="p-3">
+            <div class="card" style="width: 10rem;">
+                <img src="<?php echo $filme["posterfilme"] ?>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size:10px;"><?php echo $filme["nomefilme"] ?></h5>
+                    <p class="card-text" style="font-size:10px;">
+                        Codigo: <?php echo $filme["codfilme"] ?>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+    <?php endwhile ?>

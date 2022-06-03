@@ -14,13 +14,13 @@ include "sessao.php";
 </head>
 
 <body>
-    <!-- Barra de navegação secundária -->
+    <!-- Barra de navegação -->
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link " href="principal.php">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="cadastrofilme.php">Cadastrar</a>
+            <a class="nav-link " href="cadastrofilme.php">Cadastrar</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="removerfilme.php">Remover</a>
@@ -32,17 +32,20 @@ include "sessao.php";
             <a class="nav-link " href="principalgenero.php">Gênero</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active " href="perfil.php">Perfil</a>
+            <a class="nav-link active" href="perfil.php">Perfil</a>
         </li>
-        <li class="nav-item" style="font-size:small; margin: 10px;">
-            Bem vindo ao painel, <?php echo $_SESSION['nome']; ?>
+
+        <li class="nav-item " style="font-size:14px; margin: 10px;margin-left: 200px; font-family: 'Times New Roman', Times, serif; ">
+            <strong>Bem vindo ao painel, <?php echo $_SESSION['nome']; ?></strong>
+            <a style="font-size:small; margin-left: 280px;" href=" logout.php">Sair</a>
         </li>
-        <a style="font-size:small; margin: 10px;" href="logout.php">Sair</a>
+
     </ul>
+
+
+
+    <!-- Barra de navegação secundária -->
     <ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link " href="cadastrousuario.php">Cadastrar</a>
-        </li>
         <li class="nav-item">
             <a class="nav-link " href="removerusuario.php">Remover</a>
         </li>

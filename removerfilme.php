@@ -12,22 +12,35 @@ include "sessao.php";
 </head>
 
 <body>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 
     <!-- Barra de navegação  -->
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="principal.php">Home</a>
+            <a class="nav-link " href="principal.php">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="cadastrofilme.php">Cadastrar</a>
+            <a class="nav-link " href="cadastrofilme.php">Cadastrar</a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item">
             <a class="nav-link active" href="removerfilme.php">Remover</a>
         </li>
         <li class="nav-item">
             <a class="nav-link " href="updatefilme.php">Update</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link " href="principalgenero.php">Gênero</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="perfil.php">Perfil</a>
+        </li>
+
+        <li class="nav-item " style="font-size:14px; margin: 10px;margin-left: 200px; font-family: 'Times New Roman', Times, serif; ">
+            <strong>Bem vindo ao painel, <?php echo $_SESSION['nome']; ?></strong>
+            <a style="font-size:small; margin-left: 280px;" href=" logout.php">Sair</a>
+        </li>
+
     </ul>
 
     <!-- Formulario para remover o filme -->
